@@ -16,7 +16,8 @@ words:
   - npmmirror
   - npmrc
   - supabase
-  - trivago
   - vitepress
+  - supabase
 ignoreWords:
+  - trivago
   - zhengxs

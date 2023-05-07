@@ -1,0 +1,31 @@
+{
+  "name": "server",
+  "private": true,
+  "version": "0.1.0-beta.0",
+  "description": "",
+  "keywords": [],
+  "scripts": {
+    "watch": "node --no-warnings -r dotenv/config --watch ./src/main.mjs"
+  },
+  "packageManager": "pnpm@8.3.1",
+  "dependencies": {
+    "@koa/router": "^12.0.0",
+    "@supabase/supabase-js": "^2.13.0",
+    "common-tags": "^1.8.2",
+    "dotenv": "^16.0.3",
+    "gpt3-tokenizer": "^1.1.5",
+    "koa": "^2.14.2",
+    "koa-bodyparser": "^4.4.0",
+    "koa-logger": "^3.2.1",
+    "openai": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.13.6",
+    "@types/koa__router": "^12.0.0"
+  },
+  "author": {
+    "name": "zhengxs2018",
+    "email": "zhengxs2018@gmail.com"
+  },
+  "license": "MIT"
+}

@@ -10,7 +10,6 @@ create table "public"."nods_page" (
   meta jsonb,
   type text,
   source text
-  project text
 );
 alter table "public"."nods_page" enable row level security;
 

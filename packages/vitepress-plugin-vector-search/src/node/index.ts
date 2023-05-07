@@ -13,7 +13,7 @@ const VECTOR_SEARCH_CLIENT_CONFIG_MODULE_PATH =
   '/' + VECTOR_SEARCH_CLIENT_CONFIG
 
 export default function vectorSearch(config: VSearchPluginConfig): Plugin {
-  const { searchPath, include, onScanPages, onLoadFileAfter, onDocumentLoad, vectorStore } =
+  const { searchPath = '/vector-search', include, onScanPages, onLoadFileAfter, onDocumentLoad, vectorStore } =
     config
 
   const scanForBuild = async (config: SiteConfig) => {

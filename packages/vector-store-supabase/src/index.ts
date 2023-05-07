@@ -5,7 +5,6 @@ import type {
 } from '@zhengxs/vector-core'
 
 export type SupabaseVectorStoreConfig = {
-  project: string
   url?: string
   apiKey?: string
   client?: SupabaseClient
@@ -25,7 +24,7 @@ export const resolveSupabaseClient = ({
 }: SupabaseVectorStoreConfig) => client
 
 export function createSupabaseVectorStore(config: SupabaseVectorStoreConfig): VSVectorStore {
-  const { project = 'default', shouldRefresh = true, embeddings } = config
+  const { shouldRefresh = true, embeddings } = config
   const supabaseClient = resolveSupabaseClient(config)
 
   // copy https://github.com/supabase-community/nextjs-openai-doc-search
@@ -38,8 +37,7 @@ export function createSupabaseVectorStore(config: SupabaseVectorStoreConfig): VS
     try {
       const { error: fetchPageError, data: existingPage } = await supabaseClient
         .from('nods_page')
-        .select('id, project, path, checksum')
-        .eq('project', project)
+        .select('id, path, checksum')
         .eq('path', path)
         .limit(1)
         .maybeSingle()
@@ -79,13 +77,11 @@ export function createSupabaseVectorStore(config: SupabaseVectorStoreConfig): VS
           {
             checksum: null,
             path,
-            project,
             type: document.type,
             source: file.content,
             meta: document.metadata,
           },
-          // TODO project + path + locale should be unique
-          // { onConflict: 'path' }
+          { onConflict: 'path' }
         )
         .select()
         .limit(1)
