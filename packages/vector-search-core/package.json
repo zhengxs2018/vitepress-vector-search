@@ -1,0 +1,51 @@
+{
+  "name": "@zhengxs/vector-search-core",
+  "version": "0.1.0-beta.0",
+  "keywords": [
+    "search",
+    "vector-search"
+  ],
+  "type": "module",
+  "main": "./dist-cjs/index.cjs",
+  "module": "./dist-esm/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist-esm/index.mjs",
+      "require": "./dist-cjs/index.cjs",
+      "types": "./dist-types/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./dist-types/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist-types/index.d.ts",
+        "./dist-types/*"
+      ]
+    }
+  },
+  "files": [
+    "dist-cjs",
+    "dist-esm",
+    "dist-types"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "watch": "vite build --watch"
+  },
+  "homepage": "https://github.com/zhengxs2018/vector-search/tree/main/#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhengxs2018/vector-search.git",
+    "directory": "packages/vector-search-core"
+  },
+  "bugs": {
+    "url": "https://github.com/zhengxs2018/vector-search/issues"
+  },
+  "author": {
+    "name": "zhengxs2018",
+    "email": "zhengxs2018@gmail.com"
+  },
+  "license": "MIT"
+}

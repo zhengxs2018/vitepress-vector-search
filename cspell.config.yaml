@@ -1,0 +1,22 @@
+version: "0.2"
+ignorePaths:
+  - node_modules
+dictionaries:
+  - en_US
+  - softwareTerms
+  - bash
+  - node
+  - npm
+  - html
+  - css
+  - typescript
+  - filetypes
+words:
+  - langchain
+  - npmmirror
+  - npmrc
+  - supabase
+  - trivago
+  - vitepress
+ignoreWords:
+  - zhengxs

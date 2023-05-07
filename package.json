@@ -1,0 +1,53 @@
+{
+  "name": "vitepress-vector-search",
+  "private": true,
+  "version": "0.1.0-beta.0",
+  "description": "",
+  "keywords": [],
+  "scripts": {
+    "build": "pnpm -r build",
+    "watch": "pnpm -r --parallel watch",
+    "lint": "eslint . --ext=.cjs,.mjs,.ts --fix",
+    "fmt": "prettier --write \"./**/*.{js,cjs,ts,md,json}\""
+  },
+  "packageManager": "pnpm@8.3.1",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "18.15.10",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "@typescript-eslint/parser": "^5.59.2",
+    "@trivago/prettier-plugin-sort-imports": "^3.2.0",
+    "eslint": "8.36.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-define-config": "^1.20.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.7",
+    "simple-git-hooks": "^2.8.1",
+    "typescript": "5.0.2",
+    "vite": "^4.3.5",
+    "vite-plugin-dts": "^2.3.0",
+    "vite-plugin-externalize-deps": "^0.6.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": [
+      "prettier --write --ignore-unknown"
+    ]
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@algolia/client-search"
+      ]
+    }
+  },
+  "author": {
+    "name": "zhengxs2018",
+    "email": "zhengxs2018@gmail.com"
+  },
+  "license": "MIT"
+}

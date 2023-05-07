@@ -1,0 +1,67 @@
+{
+  "name": "@zhengxs/vitepress-plugin-vector-search",
+  "version": "0.1.0-beta.0",
+  "keywords": [
+    "search",
+    "vector-search",
+    "vitepress",
+    "vitepress-plugin",
+    "file-loader"
+  ],
+  "type": "module",
+  "main": "./dist-cjs/node/index.cjs",
+  "module": "./dist-esm/node/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist-esm/node/index.mjs",
+      "require": "./dist-cjs/node/index.cjs",
+      "types": "./dist-types/node/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./dist-types/node/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist-types/node/index.d.ts",
+        "./dist-types/*"
+      ]
+    }
+  },
+  "files": [
+    "dist-cjs",
+    "dist-esm",
+    "dist-types"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "watch": "vite build --watch"
+  },
+  "peerDependencies": {
+    "vitepress": "^1.0.0-alpha.75"
+  },
+  "dependencies": {
+    "@zhengxs/vector-search-core": "workspace:*",
+    "debug": "4.3.4",
+    "micromatch": "^4.0.5"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.7",
+    "@types/micromatch": "^4.0.2",
+    "vitepress": "^1.0.0-alpha.75"
+  },
+  "homepage": "https://github.com/zhengxs2018/vector-search/tree/main/#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhengxs2018/vector-search.git",
+    "directory": "packages/vitepress-plugin-file-loader"
+  },
+  "bugs": {
+    "url": "https://github.com/zhengxs2018/vector-search/issues"
+  },
+  "author": {
+    "name": "zhengxs2018",
+    "email": "zhengxs2018@gmail.com"
+  },
+  "license": "MIT"
+}

@@ -1,2 +1,9 @@
-# vitepress-plugin-chatgpt-search
-基于 vitepress &amp; chatgpt 的文档搜索
+# Vitepress Vector Search
+
+Vitepress & Supabase powered search plugin.
+
+> 正在开发中
+
+## License
+
+MIT
