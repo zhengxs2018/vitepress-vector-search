@@ -61,7 +61,9 @@ export default function vectorSearch(config: VSearchPluginConfig): Plugin {
       if (document.sections.length === 0) continue
 
       onDocumentLoad?.(document, { slug, locale, file })
-      vectorStore.fromDocument(document, { slug, locale, file })
+
+      // TODO 需要支持多并发请求
+      await vectorStore.fromDocument(document, { slug, locale, file })
     }
   }
 
