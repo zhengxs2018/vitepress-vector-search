@@ -13,7 +13,7 @@ const openai = new OpenAIApi(
 
 const supabaseClient = createClient(
   process.env.SUPABASE_URL,
-  process.env.SUPABASE_ANON_KEY
+  process.env.SUPABASE_SERVICE_ROLE_KEY
 )
 
 const tokenizer = new gpt3Tokenizer.default({ type: 'gpt3' })
@@ -24,9 +24,11 @@ const tokenizer = new gpt3Tokenizer.default({ type: 'gpt3' })
  * @returns
  */
 const handler = async (ctx) => {
-  const { query = '' } = ctx.request.body
+  const { query } = ctx.request.body
 
-  ctx.assert(query, 400, 'Missing query in request data')
+  if (!query) {
+    ctx.throw(400, 'Missing query in request data')
+  }
 
   // Moderate the content to comply with OpenAI T&C
   const sanitizedQuery = query.trim()
@@ -43,7 +45,6 @@ const handler = async (ctx) => {
       }
     })
   }
-
 
   const embeddingResponse = await openai.createEmbedding({
     model: 'text-embedding-ada-002',
@@ -75,6 +76,9 @@ const handler = async (ctx) => {
     ctx.throw(500, 'Failed to match page sections')
   }
 
+  if (pageSections.length === 0) {
+    ctx.throw(400, 'Failed to find context sections')
+  }
 
   let tokenCount = 0
   let contextText = ''
@@ -95,10 +99,9 @@ const handler = async (ctx) => {
   }
 
   const prompt = codeBlock`
-    ${oneLine`
-      You are a very enthusiastic Supabase representative who loves
-      to help people! Given the following sections from the Supabase
-      documentation, answer the question using only that information,
+    ${oneLine`You are a useful document assistant.
+      Given the following sections from the documentation,
+      answer the question using only that information,
       outputted in markdown format. If you are unsure and the answer
       is not explicitly written in the documentation, say
       "Sorry, I don't know how to help with that."
