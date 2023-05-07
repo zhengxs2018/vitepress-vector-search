@@ -3,7 +3,7 @@ import { existsSync } from 'node:fs'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
-import type { VSFile } from '@zhengxs/vector-search-core'
+import type { VSFile } from '@zhengxs/vector-core'
 import debug from 'debug'
 import micromatch from 'micromatch'
 

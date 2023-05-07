@@ -1,5 +1,5 @@
 {
-  "name": "@zhengxs/vector-search-core",
+  "name": "@zhengxs/vector-core",
   "version": "0.1.0-beta.0",
   "keywords": [
     "search",
@@ -38,7 +38,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zhengxs2018/vector-search.git",
-    "directory": "packages/vector-search-core"
+    "directory": "packages/vector-core"
   },
   "bugs": {
     "url": "https://github.com/zhengxs2018/vector-search/issues"

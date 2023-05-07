@@ -41,7 +41,7 @@
     "vitepress": "^1.0.0-alpha.75"
   },
   "dependencies": {
-    "@zhengxs/vector-search-core": "workspace:*",
+    "@zhengxs/vector-core": "workspace:*",
     "debug": "4.3.4",
     "micromatch": "^4.0.5"
   },

@@ -1,6 +1,6 @@
 import path from 'node:path'
 
-import { createMarkdownTextSplitter } from '@zhengxs/vector-search-core'
+import { createMarkdownTextSplitter } from '@zhengxs/vector-core'
 import type { Plugin } from 'vite'
 import { type SiteConfig, createMarkdownRenderer } from 'vitepress'
 
@@ -13,7 +13,7 @@ const VECTOR_SEARCH_CLIENT_CONFIG_MODULE_PATH =
   '/' + VECTOR_SEARCH_CLIENT_CONFIG
 
 export default function vectorSearch(config: VSearchPluginConfig): Plugin {
-  const { searchPath, include, onScanPages, onLoadFileAfter, onDocumentLoad } =
+  const { searchPath, include, onScanPages, onLoadFileAfter, onDocumentLoad, vectorStore } =
     config
 
   const scanForBuild = async (config: SiteConfig) => {
@@ -33,7 +33,7 @@ export default function vectorSearch(config: VSearchPluginConfig): Plugin {
       return siteData?.localeIndex ?? ''
     }
 
-    const getDocId = (relativePath: string) => {
+    const slugger = (relativePath: string) => {
       let relFile = slash(relativePath)
       relFile = config.rewrites.map[relFile] || relFile
       let id = path.join(config.site.base, relFile)
@@ -53,14 +53,15 @@ export default function vectorSearch(config: VSearchPluginConfig): Plugin {
     for (const file of files) {
       const { content, relativePath } = file
 
-      const id = getDocId(relativePath)
+      const slug = slugger(relativePath)
       const locale = getLocaleForPath(relativePath)
       const document = await createDocument(content)
 
       // TODO 如果文档只有 HTML 内容，就会没有 sections
       if (document.sections.length === 0) continue
 
-      onDocumentLoad(document, { id, locale, file })
+      onDocumentLoad?.(document, { slug, locale, file })
+      vectorStore.fromDocument(document, { slug, locale, file })
     }
   }
 

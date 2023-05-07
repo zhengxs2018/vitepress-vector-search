@@ -1,9 +1,9 @@
 {
-  "name": "@zhengxs/vector-store-supabase",
+  "name": "@zhengxs/vector-openai-embedding",
   "version": "0.1.0-beta.0",
   "keywords": [
-    "vector-store",
-    "supabase"
+    "search",
+    "vector-search"
   ],
   "type": "module",
   "main": "./dist-cjs/index.cjs",
@@ -35,14 +35,14 @@
     "watch": "vite build --watch"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.13.0",
-    "@zhengxs/vector-core": "workspace:*"
+    "@zhengxs/vector-core": "workspace:*",
+    "openai": "^3.2.1"
   },
   "homepage": "https://github.com/zhengxs2018/vector-search/tree/main/#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zhengxs2018/vector-search.git",
-    "directory": "packages/vector-store-supabase"
+    "directory": "packages/vector-openai-embedding"
   },
   "bugs": {
     "url": "https://github.com/zhengxs2018/vector-search/issues"

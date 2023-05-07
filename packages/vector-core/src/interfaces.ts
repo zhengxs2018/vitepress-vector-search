@@ -25,7 +25,7 @@ export interface VSTextSection {
   /**
    * 文本片段
    */
-  text: string
+  content: string
   // 允许自定义属性
   [key: string]: unknown
 }
@@ -49,7 +49,7 @@ export type VSDocument<
 }
 
 export type VSDocumentContext = {
-  id: string
+  slug: string
   locale: string
   file: VSFile
 }
@@ -67,7 +67,22 @@ export interface VSMarkdownTextSection extends VSTextSection {
   /**
    * 标题
    */
-  titles: string[]
+  title: string
+  /**
+   * 面包屑路径
+   */
+  breadcrumb: string[]
 }
 
 export type VSMarkdownDocument = VSDocument<VSMarkdownTextSection>
+
+export type VSEmbeddings = {
+  embed: (content: string) => Promise<{
+    total_tokens: number
+    embedding: number[]
+  }>
+}
+
+export type VSVectorStore = {
+  fromDocument: VSDocumentHandler<VSMarkdownDocument>
+}

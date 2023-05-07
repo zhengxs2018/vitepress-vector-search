@@ -2,6 +2,7 @@ import type { VSMarkdownDocument, VSMarkdownTextSection } from './interfaces'
 
 const headingRegex = /<h(\d*).*?>(.*?<a.*? href="#.*?".*?>.*?<\/a>)<\/h\1>/gi
 const headingContentRegex = /(.*?)<a.*? href="#(.*?)".*?>.*?<\/a>/i
+const lineBreakRegex = /\n+/g
 
 function clearHtmlTags(str: string) {
   return str.replace(/<[^>]*>/g, '')
@@ -9,7 +10,7 @@ function clearHtmlTags(str: string) {
 
 function getSearchableText(content: string) {
   content = clearHtmlTags(content)
-  return content.trim()
+  return content.replace(lineBreakRegex, '\n').trim()
 }
 
 export const markdownTextSplitter = (html: string): VSMarkdownTextSection[] => {
@@ -30,10 +31,10 @@ export const markdownTextSplitter = (html: string): VSMarkdownTextSection[] => {
 
     if (!title || !content) continue
 
-    const titles = parentTitles.slice(0, level)
+    const breadcrumb = parentTitles.slice(0, level)
 
-    titles[level] = title
-    sections.push({ anchor, titles, text: getSearchableText(content) })
+    breadcrumb[level] = title
+    sections.push({ title, anchor, breadcrumb, content: getSearchableText(content) })
 
     if (level === 0) {
       parentTitles = [title]

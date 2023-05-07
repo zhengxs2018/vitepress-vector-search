@@ -1,4 +1,4 @@
-import type { VSDocumentHandler, VSFile } from '@zhengxs/vector-search-core'
+import type { VSDocumentHandler, VSFile, VSVectorStore } from '@zhengxs/vector-core'
 import { type SiteConfig } from 'vitepress'
 
 export type VSFileLoaderConfig = {
@@ -44,11 +44,15 @@ export interface VSearchPluginConfig
   /**
    * 处理文档源码
    */
-  onDocumentLoad: VSDocumentHandler
+  onDocumentLoad?: VSDocumentHandler
+  /**
+   * 文档存储
+   */
+  vectorStore: VSVectorStore
   /**
    * 允许动态配置
    */
-  [key: string]: any
+  [key: string]: unknown
 }
 
 export type VSearchPluginOptions = Required<VSearchPluginConfig>
