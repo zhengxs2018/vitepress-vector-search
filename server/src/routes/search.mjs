@@ -26,7 +26,7 @@ const tokenizer = new gpt3Tokenizer.default({ type: 'gpt3' })
 const handler = async (ctx) => {
   const { query = '' } = ctx.request.body
 
-  ctx.assert(!query, 400, 'Missing query in request data')
+  ctx.assert(query, 400, 'Missing query in request data')
 
   // Moderate the content to comply with OpenAI T&C
   const sanitizedQuery = query.trim()

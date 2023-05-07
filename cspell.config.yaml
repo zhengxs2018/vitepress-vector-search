@@ -12,12 +12,12 @@ dictionaries:
   - typescript
   - filetypes
 words:
+  - bodyparser
   - langchain
   - npmmirror
   - npmrc
   - supabase
   - vitepress
-  - supabase
 ignoreWords:
   - trivago
   - zhengxs
