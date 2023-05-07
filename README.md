@@ -9,7 +9,11 @@ Vitepress & Supabase powered search plugin.
 ### 安装依赖
 
 ```bash
-$ pnpm add @zhengxs/vitepress-plugin-vector-search @zhengxs/vector-openai-embedding @zhengxs/vector-store-supabase
+# With Yarn
+$ yarn add -D @zhengxs/vitepress-plugin-vector-search @zhengxs/vector-openai-embedding @zhengxs/vector-store-supabase
+
+# With PNPM
+$ pnpm add -D @zhengxs/vitepress-plugin-vector-search @zhengxs/vector-openai-embedding @zhengxs/vector-store-supabase
 ```
 
 ### 使用插件
@@ -55,6 +59,8 @@ export default defineConfig({
 开发中...
 
 ## 参考项目
+
+以下排名不分先后
 
 - [langchain](https://js.langchain.com/)
 - [nextjs-openai-doc-search](https://github.com/supabase-community/nextjs-openai-doc-search)
